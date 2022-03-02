@@ -1,23 +1,26 @@
-import { CREATE, ERROR } from "../constants/actionTypes";
+import { CREATE, AUTH } from "../constants/actionTypes";
 import * as api from "../api/index";
-import { useState } from "react";
 
-export const register = (user) => async (dispatch) => {
+export const register = (user, history, setError) => async (dispatch) => {
   try {
     const { data } = await api.register(user);
     dispatch({ type: CREATE, data: data });
+    await history.push("/myhome");
   } catch (error) {
+    setError(error.response.data.error);
     console.log(error.response.data.error);
   }
 };
 
-export const login = (user) => async (dispatch) => {
+export const login = (user, history, setError) => async (dispatch) => {
   try {
     const { data } = await api.login(user);
-    dispatch({ type: CREATE, data: data });
-    localStorage.setItem("authToken", data.token);
-    console.log("success");
+    dispatch({ type: AUTH, data: data });
+    await history.push("/myhome");
   } catch (error) {
-    console.log(error.response.data.error);
+    setError(error.response.data.error);
+    setTimeout(() => {
+      setError("");
+    }, 5000);
   }
 };

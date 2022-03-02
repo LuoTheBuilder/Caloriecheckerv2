@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+}
+
+.menu {
+  height: 60px;
+  background-color: aquamarine;
+}
+.sidebar {
+  width: 20%;
+  position: fixed;
+  background-color: aquamarine;
+  height: 100vh;
+}
+
+.main {
+  width: 80%;
+  margin-left: 20%;
+  height: 200vh;
+  background-color: bisque;
+}

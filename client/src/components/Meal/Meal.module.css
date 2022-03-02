@@ -1,0 +1,29 @@
+.chartRow {
+  display: flex;
+  opacity: 0.7;
+}
+
+.nameRow {
+  width: 40%;
+  text-align: center;
+}
+.otherRow {
+  width: 20%;
+  text-align: center;
+}
+
+.entry {
+  background-color: #e2e2e2;
+
+  padding: 10px;
+  margin: 2px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.chartRow:hover {
+  opacity: 1;
+}
+
+.delete {
+  font-size: 18px !important;
+}

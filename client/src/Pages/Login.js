@@ -1,39 +1,73 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+import { useHistory } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
+import {
+  Link,
+  Grid,
+  CssBaseline,
+  Button,
+  Avatar,
+  Box,
+  Typography,
+  Container,
+} from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { register, login } from "../actions/users";
 import Copyright from "../components/Boilerplate/Copyright";
-import { login } from "../actions/users";
+import Icon from "../Assets/Google";
+import Input from "../components/UI/Input";
 
-export const Login = ({ history }) => {
-  const theme = createTheme();
-  const dispatch = useDispatch();
-  const [loginDeets, setLoginDeets] = useState({
+export const Login = () => {
+  const [signup, setSignup] = useState(false);
+  const [error, setError] = useState("");
+  const [user, setUserData] = useState({
+    name: "",
+    GivenName: "",
+    username: "",
     email: "",
     password: "",
+    confPass: "",
   });
 
-  const [error, setError] = useState();
+  const theme = createTheme();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const loginHandler = (e) => {
-    e.preventDefault();
-    try {
-      dispatch(login(loginDeets));
-      // history.push("/");
-    } catch (error) {}
+  const statusHandler = () => {
+    setSignup((prevSignup) => !prevSignup);
   };
+  const changeHandler = (e) => {
+    setUserData({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (signup) {
+      if (user.password !== user.confPass) {
+        setError("The passwords do not match.");
+        setUserData({ ...user, password: "", confPass: "" });
+      } else {
+        dispatch(register(user, history, setError));
+      }
+    } else {
+      dispatch(login(user, history, setError));
+      history.push("/myhome");
+    }
+  };
+
+  const googleSuccess = async (res) => {
+    const response = res?.profileObj;
+    const token = res?.tokenId;
+    try {
+      dispatch({ type: "AUTH", data: { response, token } });
+      history.push("/myhome");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const googleFailure = () => {};
 
   return (
     <ThemeProvider theme={theme}>
@@ -51,65 +85,105 @@ export const Login = ({ history }) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            {signup ? "Sign Up" : "Sign In"}
           </Typography>
           <Box
             component="form"
-            onSubmit={loginHandler}
             noValidate
-            sx={{ mt: 1 }}
+            onSubmit={submitHandler}
+            sx={{ mt: 3 }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              onChange={(e) => {
-                setLoginDeets({ ...loginDeets, email: e.target.value });
-              }}
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={(e) => {
-                setLoginDeets({ ...loginDeets, password: e.target.value });
-              }}
-            />
-            {error && <span style={{ color: "red" }}>{error}</span>}
+            <Grid container spacing={2}>
+              {signup && (
+                <>
+                  <Input
+                    id="name"
+                    label="First Name"
+                    value={user.name}
+                    onChange={changeHandler}
+                  />
+                  <Input
+                    id="givenName"
+                    label="Last Name"
+                    value={user.givenName}
+                    onChange={changeHandler}
+                  />
+                  <Input
+                    id="username"
+                    label="Username"
+                    value={user.username}
+                    onChange={changeHandler}
+                  />
+                </>
+              )}
 
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+              <Input
+                id="email"
+                label="Email Address"
+                type="email"
+                value={user.email}
+                onChange={changeHandler}
+              />
+              <Input
+                id="password"
+                label="Password"
+                type="password"
+                value={user.password}
+                onChange={changeHandler}
+              />
+              {signup && (
+                <>
+                  <Input
+                    id="confPass"
+                    label="Confirm Password"
+                    value={user.confPass}
+                    type="password"
+                    onChange={changeHandler}
+                  />
+                </>
+              )}
+              {error && <span style={{ color: "red" }}>{error}</span>}
+            </Grid>
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              {signup ? "Sign Up" : "Sign In"}
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link to="/forgotpassword">Forgot password?</Link>
-              </Grid>
+            <GoogleLogin
+              clientId="792050151412-m9t1ormjgefl7h4ojia93qcrgjjim39n.apps.googleusercontent.com"
+              render={(renderProps) => (
+                <Button
+                  // className={classes.googleButton}
+                  color="primary"
+                  fullWidth
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  startIcon={<Icon />}
+                  variant="contained"
+                >
+                  Google Sign In
+                </Button>
+              )}
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
+              cookiePolicy="single_host_origin"
+            />
+
+            <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to="/register">{"Don't have an account? Sign Up"}</Link>
+                <Link onClick={statusHandler}>
+                  {signup
+                    ? "Already have an account? Sign in"
+                    : "Don't have an account? Sign up"}
+                </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

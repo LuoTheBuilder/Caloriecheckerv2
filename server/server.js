@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
+import mealRoutes from "./routes/meals.js";
 import errorHandler from "./middleware/error.js";
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRoutes);
+app.use("/meals", mealRoutes);
 app.use(cors());
 app.use(errorHandler);
 

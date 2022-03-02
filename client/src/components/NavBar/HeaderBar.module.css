@@ -1,0 +1,9 @@
+.logo {
+  height: 40px;
+  margin: 5px 20px;
+}
+
+.appBar {
+  position: fixed;
+  background-color: rgb(219, 219, 219);
+}

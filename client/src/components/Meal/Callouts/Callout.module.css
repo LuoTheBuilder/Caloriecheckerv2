@@ -1,0 +1,41 @@
+.cardHolder {
+  width: 25%;
+}
+
+.card {
+  margin: 10px;
+  border-radius: 2px;
+}
+
+.card h2 {
+  margin: 0px;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.cardTop {
+  padding: 15px;
+}
+.cardBottom {
+  height: 150px;
+  padding: 15px;
+  background: #46a554;
+}
+.cardStat {
+  height: 145px;
+  background: linear-gradient(
+    90deg,
+    rgb(86, 161, 129) 1%,
+    rgb(72, 148, 83) 100%
+  );
+}
+
+.cardStat p {
+  font-size: 100px;
+  margin: 0px;
+  text-align: center;
+}
+.cardStat h5 {
+  text-align: center;
+  margin: 0px;
+}

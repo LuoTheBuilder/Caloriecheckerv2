@@ -3,13 +3,13 @@ import User from "../models/Users.js";
 import ErrorResponse from "../utils/ErrorResponse.js";
 
 export const register = async (req, res, next) => {
-  const { username, email, firstname, lastname, password } = req.body;
+  const { username, email, name, givenName, password } = req.body;
   try {
     const user = await User.create({
       username,
       email,
-      firstname,
-      lastname,
+      name,
+      givenName,
       password,
     });
     sendToken(user, 201, res);
@@ -37,11 +37,12 @@ export const login = async (req, res, next) => {
       return next(new ErrorResponse("Invalid Credentials.", 401));
     }
 
-    sendToken(user, 201, res);
+    sendToken(user, 201, res, user);
   } catch (error) {}
 };
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getToken();
-  res.status(statusCode).json({ sucess: true, token });
+
+  res.status(statusCode).json({ sucess: true, user, token });
 };

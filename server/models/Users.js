@@ -11,8 +11,8 @@ const userSchema = mongoose.Schema({
     match: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
   },
   password: { type: String, required: [true, "Please provide a password."] },
-  firstname: { type: String, required: [true, "Please provide a first name."] },
-  lastname: { type: String, required: [true, "Please provide a last name."] },
+  name: { type: String, required: [true, "Please provide a first name."] },
+  givenName: { type: String, required: [true, "Please provide a last name."] },
 });
 
 userSchema.pre("save", async function (next) {

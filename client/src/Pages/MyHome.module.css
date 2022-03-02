@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 17%;
+  position: fixed;
+  background-color: rgb(241, 241, 241);
+  height: 100vh;
+}
+
+.main {
+  width: 83%;
+  margin-top: 60px;
+  margin-left: 17%;
+  background-color: rgb(241, 241, 241);
+}

@@ -1,0 +1,16 @@
+.container {
+  margin: 10px 0px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+}
+.entry {
+  width: 20%;
+  padding: 5px;
+}
+
+.button {
+  margin: 10px !important;
+  max-height: 50px !important;
+}

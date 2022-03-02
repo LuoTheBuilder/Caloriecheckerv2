@@ -1,17 +1,23 @@
 import { Switch, Route } from "react-router-dom";
-import HeaderBar from "./components/UI/HeaderBar";
+
 import { Home } from "./Pages/Home";
 import { Login } from "./Pages/Login";
-import { Signup } from "./Pages/Signup";
+import PrivateRoute from "./Routing/PrivateRoute";
+import MyHome from "./Pages/MyHome";
+import HeaderBar from "./components/NavBar/HeaderBar";
+import AddMealPage from "./Pages/AddMeal";
+import LayoutTest from "./Pages/LayoutTest";
 
 function App() {
+  const signup = true;
   return (
     <>
-      <HeaderBar />
+      <HeaderBar color="inherit" />
       <Switch>
+        <Route path="/test" component={LayoutTest} exact />
         <Route path="/" component={Home} exact />
-        <Route path="/login" exact component={Login} />
-        <Route path="/register" component={Signup} exact />
+        <Route path="/login" component={Login} exact />
+        <PrivateRoute path="/myhome" component={MyHome} />
       </Switch>
     </>
   );

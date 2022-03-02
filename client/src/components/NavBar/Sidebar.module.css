@@ -1,0 +1,37 @@
+.sidebar {
+  margin-top: 80px !important;
+  padding: 10px;
+  background-color: #131a28;
+  border-top-right-radius: 20px;
+  color: white !important;
+  height: 100vh;
+}
+
+.sidebarWrapper {
+  padding: 30px 0px;
+}
+
+.listItem {
+  padding: 20px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #5a5f68;
+}
+
+.listItem:hover {
+  color: white;
+  background-color: #242d41;
+}
+
+.active {
+  color: white;
+}
+
+.sidebarIcon {
+  margin-right: 15px;
+  font-size: 30px !important;
+}

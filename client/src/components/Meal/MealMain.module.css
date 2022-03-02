@@ -1,0 +1,36 @@
+.card {
+  margin: 20px;
+  padding: 50px;
+}
+.mainWrapper {
+  padding: 30px;
+  flex-wrap: wrap;
+}
+
+.charts {
+  height: 40vh;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  border: solid 1px black;
+}
+
+.meals {
+  padding: 20px;
+  padding: 20px 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.bottomWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chartWrapper {
+  width: 50%;
+}
+.mealWrapper {
+  width: 50%;
+}
