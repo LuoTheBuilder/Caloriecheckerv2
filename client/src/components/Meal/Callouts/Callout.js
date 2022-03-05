@@ -2,9 +2,9 @@ import { Card } from "@mui/material";
 import React from "react";
 import classes from "./Callout.module.css";
 
-const Callout = ({ title, value, smallText }) => {
+const Callout = ({ title, value, smallText, className }) => {
   return (
-    <div className={classes.cardHolder}>
+    <div className={`${classes.cardHolder} ${className}`}>
       <Card className={classes.card}>
         <div className={classes.cardTop}>
           <h2>{title}</h2>

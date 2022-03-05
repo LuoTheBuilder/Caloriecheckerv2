@@ -13,10 +13,6 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: [true, "Please provide a password."] },
   name: { type: String, required: [true, "Please provide a first name."] },
   givenName: { type: String, required: [true, "Please provide a last name."] },
-  target: {
-    type: Number,
-    required: [true, "Please provide a calorie target."],
-  },
 });
 
 userSchema.pre("save", async function (next) {

@@ -28,7 +28,13 @@ const HeaderBar = ({ color }) => {
         <Link to="/">
           <img className={classes.logo} src={logo} />
         </Link>
-        <Typography variant="h5" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+        <Typography
+          variant="h5"
+          color="inherit"
+          noWrap
+          sx={{ flexGrow: 1 }}
+          className={classes.name}
+        >
           <b>Calorie </b>Checker
         </Typography>
         {/* <nav>
@@ -42,22 +48,24 @@ const HeaderBar = ({ color }) => {
           </Link>
         </nav> */}
 
-        {user ? (
-          <>
-            <Link to="/myhome/dash"> Hi, {user.name}</Link>
-            <Button
-              onClick={logoutHandler}
-              variant="text"
-              sx={{ my: 1, mx: 1.5 }}
-            >
-              Logout
+        <div className={classes.rightnav}>
+          {user ? (
+            <>
+              <Link to="/myhome/dash"> Hi, {user.name}</Link>
+              <Button
+                onClick={logoutHandler}
+                variant="text"
+                sx={{ my: 1, mx: 1.5 }}
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <Button variant="contained" component={Link} to="/login">
+              Login
             </Button>
-          </>
-        ) : (
-          <Button variant="contained" component={Link} to="/login">
-            Login
-          </Button>
-        )}
+          )}
+        </div>
       </Toolbar>
     </AppBar>
   );

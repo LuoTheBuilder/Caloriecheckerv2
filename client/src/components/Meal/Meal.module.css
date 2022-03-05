@@ -14,7 +14,6 @@
 
 .entry {
   background-color: #e2e2e2;
-
   padding: 10px;
   margin: 2px;
   font-weight: 500;
@@ -26,4 +25,6 @@
 
 .delete {
   font-size: 18px !important;
+}
+@media only screen and (max-width: 600px) {
 }

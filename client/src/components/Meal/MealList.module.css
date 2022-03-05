@@ -55,16 +55,6 @@
   transition: all 1s linear;
 }
 
-.cardStat p {
-  font-size: 100px;
-  margin: 0px;
-  text-align: center;
-}
-.cardStat h5 {
-  text-align: center;
-  margin: 0px;
-}
-
 .chartTitles {
   display: flex;
 }
@@ -98,4 +88,14 @@
 .quickAdd:hover {
   opacity: 1;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .chartTitle {
+    font-size: 11px;
+    padding: 10px 5px;
+  }
+  .hide {
+    display: none;
+  }
 }

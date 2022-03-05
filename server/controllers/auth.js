@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import User from "../models/Users.js";
 import ErrorResponse from "../utils/ErrorResponse.js";
 
@@ -41,6 +42,20 @@ export const login = async (req, res, next) => {
     res.status(400).json({ message: error });
   }
 };
+
+// export const updateUser = async (req, res, next) => {
+//   const { id: _id } = req.params;
+//   const user = req.body;
+//   if (!mongoose.Types.ObjectId.isValid(_id)) {
+//     return next(new ErrorResponse("Invalid request.", 401));
+//   }
+//   const updatedUser = await User.findByIdAndUpdate(
+//     _id,
+//     { ...user, _id },
+//     { new: true }
+//   );
+//   res.json(updatedUser);
+// };
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getToken();

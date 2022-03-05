@@ -23,7 +23,8 @@ const MealList = ({ meals, title, expanded }) => {
           <h2>{title}</h2>
           {!expanded && (
             <div className={classes.quickAdd} onClick={setAddHandler}>
-              <AddCircleOutlineIcon /> Quick Add
+              <AddCircleOutlineIcon />{" "}
+              <div className={classes.hide}>Quick Add</div>
             </div>
           )}
         </div>

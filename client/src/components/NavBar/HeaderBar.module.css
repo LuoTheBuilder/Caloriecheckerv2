@@ -7,3 +7,15 @@
   position: fixed;
   background-color: rgb(219, 219, 219);
 }
+
+@media only screen and (max-width: 600px) {
+  .name {
+    display: none;
+  }
+
+  .rightnav {
+    right: 0px;
+    position: absolute;
+    padding: 0px 20px;
+  }
+}

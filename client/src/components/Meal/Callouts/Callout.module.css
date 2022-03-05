@@ -45,3 +45,24 @@
   text-align: center;
   margin: 0px;
 }
+
+@media only screen and (max-width: 600px) {
+  .cardHolder {
+    width: 50%;
+  }
+  .cardTop {
+    height: 70px;
+  }
+  .cardStat {
+    height: fit-content;
+  }
+  .cardBottom {
+    height: fit-content;
+  }
+  .cardStat p {
+    font-size: 50px;
+  }
+  .cardStat p span {
+    font-size: 20px;
+  }
+}

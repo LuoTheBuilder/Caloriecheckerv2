@@ -53,12 +53,10 @@ const ChartRender = ({ data, type }) => {
           data={state}
           options={{
             title: {
-              display: true,
-              text: "Average Rainfall per month",
-              fontSize: 20,
+              display: false,
             },
             legend: {
-              display: true,
+              display: false,
               position: "top",
             },
           }}
@@ -69,9 +67,7 @@ const ChartRender = ({ data, type }) => {
           data={state}
           options={{
             title: {
-              display: true,
-              text: "Average Rainfall per month",
-              fontSize: 20,
+              display: false,
             },
             legend: {
               display: false,
