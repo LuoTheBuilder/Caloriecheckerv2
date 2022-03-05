@@ -44,7 +44,7 @@ const HeaderBar = ({ color }) => {
 
         {user ? (
           <>
-            <Link to="/myhome"> Hi, {user.name}</Link>
+            <Link to="/myhome/dash"> Hi, {user.name}</Link>
             <Button
               onClick={logoutHandler}
               variant="text"

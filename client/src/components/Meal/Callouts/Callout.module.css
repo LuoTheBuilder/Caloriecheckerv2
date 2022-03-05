@@ -31,9 +31,15 @@
 }
 
 .cardStat p {
-  font-size: 100px;
+  font-size: 90px;
+  color: rgb(49, 49, 49);
+  font-weight: 600;
   margin: 0px;
   text-align: center;
+}
+
+.cardStat p span {
+  font-size: 50px;
 }
 .cardStat h5 {
   text-align: center;

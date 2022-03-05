@@ -1,0 +1,21 @@
+.mainWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px;
+  align-items: center;
+}
+
+.leftWrapper {
+  width: 30%;
+}
+.leftWrapper h2 {
+  text-align: left;
+}
+.rightWrapper {
+  width: 60%;
+  text-align: center;
+}
+.saveWrapper {
+  width: 10%;
+  text-align: center;
+}

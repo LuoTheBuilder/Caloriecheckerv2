@@ -4,6 +4,7 @@ import { Chart, registerables } from "chart.js";
 
 const ChartRender = ({ data, type }) => {
   Chart.register(...registerables);
+
   const state = {
     labels: [
       data[6]?.date,
@@ -11,8 +12,8 @@ const ChartRender = ({ data, type }) => {
       data[4]?.date,
       data[3]?.date,
       data[2]?.date,
-      "Yesterday",
-      "Today",
+      data[1]?.date === "Allocation Left" ? "Allocation Left" : "Yesterday",
+      data[0]?.date === "Consumed" ? "Consumed" : "Today",
     ],
     datasets: [
       {

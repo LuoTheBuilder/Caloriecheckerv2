@@ -1,0 +1,23 @@
+.cardHolder {
+  width: 25%;
+}
+
+.card {
+  margin: 10px;
+  border-radius: 2px;
+}
+
+.card h2 {
+  margin: 0px;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.cardTop {
+  padding: 15px;
+}
+.cardBottom {
+  height: 150px;
+  padding: 15px;
+  background: #46a554;
+}

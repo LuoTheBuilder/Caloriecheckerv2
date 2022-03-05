@@ -5,7 +5,7 @@ const mealSchema = mongoose.Schema({
   mealName: String,
   calories: Number,
   date: String,
-  rating: String,
+  rating: Number,
 });
 
 const Meal = mongoose.model("Meal", mealSchema);

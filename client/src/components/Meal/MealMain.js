@@ -10,14 +10,14 @@ import DateCondenser from "../HelperFunctions/DateCondenser";
 
 const MealMain = () => {
   const dispatch = useDispatch();
-  const today = new Date(Date.now()).toISOString().substring(0, 10);
+  const today = new Date(Date.now() - 360e5).toISOString().substring(0, 10);
   const meals = useSelector((state) => state.meals);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
   const data = DateCondenser(meals);
   const startDate = new Date(Date.now() - 845e5 * 7)
     .toISOString()
     .substring(0, 10);
-
   const todayMeals = meals.filter((meal) => meal.date === today);
   const prevMeals = meals.filter(
     (meal) => meal.date < today && meal.date >= startDate
@@ -26,18 +26,18 @@ const MealMain = () => {
 
   const array = [
     [
-      { date: "consumed", cals: calTotal },
+      { date: "Consumed", cals: calTotal },
       { date: "Allocation Left", cals: 17000 - calTotal },
     ],
   ];
 
   useEffect(() => {
     dispatch(getMeals(user._id));
-  }, [useSelector]);
+  }, []);
 
   return (
     <Container className={classes.mainWrapper} maxWidth="xl">
-      <Callouts data={data.array} />
+      <Callouts target={user.target} data={data.array} meals={meals} />
       <div className={classes.bottomWrapper}>
         <div className={classes.chartWrapper}>
           <Chart
@@ -45,7 +45,7 @@ const MealMain = () => {
             type="line"
             title="Your 7-Day Calorie Breakdown"
           />
-          <MealList meals={prevMeals} title="Past Meals" allowAdd="false" />
+          <MealList meals={prevMeals} title="Past Meals" expanded="false" />
         </div>
         <div className={classes.mealWrapper}>
           <MealList meals={todayMeals} title="Today's Meals" allowAdd="true" />

@@ -1,0 +1,11 @@
+.mainWrapper {
+  padding: 30px;
+  display: flex;
+}
+
+.leftWrapper {
+  width: 50%;
+}
+.rightWrapper {
+  width: 50%;
+}

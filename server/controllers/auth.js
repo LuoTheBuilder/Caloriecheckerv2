@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import User from "../models/Users.js";
 import ErrorResponse from "../utils/ErrorResponse.js";
 
@@ -38,7 +37,9 @@ export const login = async (req, res, next) => {
     }
 
     sendToken(user, 201, res, user);
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
 };
 
 const sendToken = (user, statusCode, res) => {

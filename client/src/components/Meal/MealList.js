@@ -5,20 +5,27 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useState } from "react";
 import QuickAdd from "./QuickAdd";
 
-const MealList = ({ meals, title, allowAdd }) => {
+const MealList = ({ meals, title, expanded }) => {
   const [quickAdd, setQuickAdd] = useState(false);
+  const [expand, setExpand] = useState(false);
 
   const setAddHandler = () => {
     setQuickAdd((prevQuickAdd) => !prevQuickAdd);
+  };
+
+  const expandHandler = () => {
+    setExpand((prevExpand) => !prevExpand);
   };
   return (
     <div className={classes.cardHolder}>
       <Card className={classes.card}>
         <div className={classes.cardTop}>
           <h2>{title}</h2>
-          <div className={classes.quickAdd} onClick={setAddHandler}>
-            <AddCircleOutlineIcon /> Quick Add
-          </div>
+          {!expanded && (
+            <div className={classes.quickAdd} onClick={setAddHandler}>
+              <AddCircleOutlineIcon /> Quick Add
+            </div>
+          )}
         </div>
         <div className={classes.cardBottom}>
           {quickAdd && <QuickAdd setQuickAdd={setQuickAdd} />}
@@ -36,18 +43,24 @@ const MealList = ({ meals, title, allowAdd }) => {
               <div className={classes.chartTitle}>Options</div>
             </div>
           </div>
-          {meals.map((meal) => (
-            <Meal
-              key={meal._id}
-              mealName={meal.mealName}
-              date={meal.date}
-              calories={meal.calories}
-              id={meal._id}
-              rating={meal.rating}
-            />
-          ))}
-          <h5></h5>
+          <div className={expand ? classes.mealListExp : classes.mealListDef}>
+            {meals.map((meal) => (
+              <Meal
+                key={meal._id}
+                mealName={meal.mealName}
+                date={meal.date}
+                calories={meal.calories}
+                id={meal._id}
+                rating={meal.rating}
+              />
+            ))}
+          </div>
         </div>
+        {expanded && (
+          <div className={classes.expandBar}>
+            <p onClick={expandHandler}>{expand ? "Less" : "More"}</p>
+          </div>
+        )}
       </Card>
     </div>
   );

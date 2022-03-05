@@ -1,11 +1,11 @@
-import Input from "../UI/Input";
+import Input from "../../UI/Input";
 import React, { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import classes from "./QuickAdd.module.css";
 import { Button, Grid } from "@mui/material";
-import { addMeal } from "../../actions/meals";
+import { addMeal } from "../../../actions/meals";
 
-const QuickAdd = ({ setQuickAdd }) => {
+const NewAdd = ({ setQuickAdd }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   // const [dropdown, setDropdown] = useState(true);
@@ -26,19 +26,7 @@ const QuickAdd = ({ setQuickAdd }) => {
     e.preventDefault();
     dispatch(addMeal(meal));
     setQuickAdd();
-    clearHandler();
   };
-  const clearHandler = () => {
-    setMeal({
-      mealName: "",
-      calories: "",
-      rating: "",
-      date: "",
-      user: user._id,
-    });
-  };
-
-  console.log(meal);
   return (
     <Grid component="form" onSubmit={submitHandler}>
       <div className={classes.container}>
@@ -48,7 +36,6 @@ const QuickAdd = ({ setQuickAdd }) => {
               className={classes.input}
               label="Meal Name"
               id="mealName"
-              value={meal.mealName}
               onChange={changeHandler}
             />
           </div>
@@ -57,25 +44,14 @@ const QuickAdd = ({ setQuickAdd }) => {
               label="Calories"
               type="number"
               id="calories"
-              value={meal.calories}
               onChange={changeHandler}
             />
           </div>
           <div className={classes.entry}>
-            <Input
-              label="Rating"
-              id="rating"
-              value={meal.rating}
-              onChange={changeHandler}
-            />
+            <Input label="Rating" id="rating" onChange={changeHandler} />
           </div>
           <div className={classes.entry}>
-            <Input
-              type="date"
-              id="date"
-              value={meal.date}
-              onChange={changeHandler}
-            />
+            <Input type="date" id="date" onChange={changeHandler} />
           </div>
           <Button variant="contained" type="submit" className={classes.button}>
             Add
@@ -86,4 +62,4 @@ const QuickAdd = ({ setQuickAdd }) => {
   );
 };
 
-export default QuickAdd;
+export default NewAdd;

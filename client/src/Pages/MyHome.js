@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Button } from "@mui/material";
-import { useHistory, Route, Switch } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import Sidebar from "../components/NavBar/Sidebar";
 import MealMain from "../components/Meal/MealMain";
 import classes from "./MyHome.module.css";
 import PrivateRoute from "../Routing/PrivateRoute";
-import AddMeal from "../components/AddMeal/AddMeal";
+import Menu from "../components/Menu/Menu";
+import Profile from "./Profile";
 
 const MyHome = () => {
   const dispatch = useDispatch();
@@ -23,8 +23,10 @@ const MyHome = () => {
         <Sidebar />
       </div>
       <div className={classes.main}>
-        <PrivateRoute path="/myhome/" component={MealMain} exact />
-        <PrivateRoute path="/myhome/addmeal" component={AddMeal} exact />
+        <Redirect path="/myhome" to="/myhome/dash" />
+        <PrivateRoute path="/myhome/dash" component={MealMain} exact />
+        <PrivateRoute path="/myhome/addmeal" component={Menu} exact />
+        <PrivateRoute path="/myhome/profile" component={Profile} exact />
       </div>
     </div>
   );

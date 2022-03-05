@@ -1,0 +1,13 @@
+.mainWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.leftWrapper {
+  width: 60%;
+}
+
+.rightWrapper {
+  width: 40%;
+  text-align: right;
+}

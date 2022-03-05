@@ -1,0 +1,12 @@
+.mainWrapper {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.leftWrapper {
+  width: 60%;
+}
+
+.rightWrapper {
+  width: 40%;
+}

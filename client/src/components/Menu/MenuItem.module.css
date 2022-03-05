@@ -1,0 +1,52 @@
+.container {
+  margin: 40px 40px;
+  display: flex;
+  padding: 20px;
+  border-bottom: solid 1px rgb(187, 187, 187);
+}
+
+.leftWrapper {
+  width: 40%;
+}
+
+.rightWrapper {
+  width: 20%;
+  text-align: center;
+  font-size: 30px;
+}
+
+.rightWrapper span {
+  font-size: 16px;
+}
+
+.middle1Wrapper {
+  width: 20%;
+  text-align: center;
+  font-size: 30px;
+}
+
+.middle1Wrapper span {
+  font-size: 16px;
+}
+
+.middle2Wrapper {
+  width: 20%;
+  text-align: center;
+  font-size: 30px;
+}
+
+.middle2Wrapper span {
+  font-size: 16px;
+}
+.topHalf {
+  width: 100%;
+}
+
+.topHalf h3 {
+  font-size: 25px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+.bottomHalf {
+  width: 100%;
+}

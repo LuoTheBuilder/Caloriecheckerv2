@@ -1,0 +1,11 @@
+.mainWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.leftWrapper {
+  width: 50%;
+}
+
+.rightWrapper {
+  width: 50%;
+}

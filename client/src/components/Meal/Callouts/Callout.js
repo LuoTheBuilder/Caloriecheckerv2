@@ -2,7 +2,7 @@ import { Card } from "@mui/material";
 import React from "react";
 import classes from "./Callout.module.css";
 
-const Callout = ({ title, value }) => {
+const Callout = ({ title, value, smallText }) => {
   return (
     <div className={classes.cardHolder}>
       <Card className={classes.card}>
@@ -11,7 +11,10 @@ const Callout = ({ title, value }) => {
         </div>
         <div className={classes.cardBottom}>
           <div className={classes.cardStat}>
-            <p>{value}</p>
+            <p>
+              {value}
+              <span>{smallText}</span>
+            </p>
             <h5></h5>
           </div>
         </div>

@@ -1,9 +1,10 @@
 import React from "react";
 
 const MealCondenser = (days, meals) => {
-  const day = new Date(Date.now() - 845e5 * days)
+  const day = new Date(Date.now() - 360e5 - 845e5 * days)
     .toISOString()
     .substring(0, 10);
+
   const daycals = meals
     .filter((meal) => meal.date === day)
     .reduce((a, v) => (a = a + v.calories), 0);

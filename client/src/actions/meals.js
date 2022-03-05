@@ -14,7 +14,6 @@ export const getMeals = (id, setError) => async (dispatch) => {
 export const addMeal = (meal) => async (dispatch) => {
   try {
     const { data } = await api.addMeal(meal);
-    console.log(meal);
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
     console.log(error);

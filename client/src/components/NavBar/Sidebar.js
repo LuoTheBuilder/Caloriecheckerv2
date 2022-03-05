@@ -1,8 +1,7 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import classes from "./Sidebar.module.css";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import PersonIcon from "@mui/icons-material/Person";
@@ -17,7 +16,7 @@ const Sidebar = () => {
         </Typography>
 
         <NavLink
-          to="/myhome/"
+          to="/myhome/dash"
           className={classes.listItem}
           activeClassName={classes.active}
         >
@@ -34,15 +33,14 @@ const Sidebar = () => {
           Menu
         </NavLink>
 
-        <div className={classes.listItem}>
-          <FitnessCenterIcon className={classes.sidebarIcon} />
-          Fitness Goals
-        </div>
-
-        <div className={classes.listItem}>
+        <NavLink
+          to="/myhome/profile"
+          className={classes.listItem}
+          activeClassName={classes.active}
+        >
           <PersonIcon className={classes.sidebarIcon} />
           User Settings
-        </div>
+        </NavLink>
       </div>
     </div>
   );
