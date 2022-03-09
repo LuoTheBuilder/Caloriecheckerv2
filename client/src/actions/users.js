@@ -1,4 +1,4 @@
-import { CREATE, AUTH } from "../constants/actionTypes";
+import { CREATE, AUTH, SAVECREDS } from "../constants/actionTypes";
 import * as api from "../api/index";
 
 export const register = (user, history, setError) => async (dispatch) => {
@@ -23,4 +23,11 @@ export const login = (user, history, setError) => async (dispatch) => {
       setError("");
     }, 5000);
   }
+};
+
+export const getUser = (data) => async (dispatch) => {
+  try {
+    const user = await JSON.parse(localStorage.getItem("profile"));
+    dispatch({ type: SAVECREDS, data: user });
+  } catch (error) {}
 };

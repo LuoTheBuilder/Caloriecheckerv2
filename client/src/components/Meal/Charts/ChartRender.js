@@ -55,6 +55,9 @@ const ChartRender = ({ data, type }) => {
             title: {
               display: false,
             },
+            plugins: {
+              legend: false,
+            },
             legend: {
               display: false,
               position: "top",
@@ -68,6 +71,9 @@ const ChartRender = ({ data, type }) => {
           options={{
             title: {
               display: false,
+            },
+            plugins: {
+              legend: false,
             },
             legend: {
               display: false,

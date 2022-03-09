@@ -3,7 +3,13 @@ import * as api from "../api/index";
 
 export const getMenu = (id) => async (dispatch) => {
   try {
-    const { data } = await api.getMenu(id);
+    const config = {
+      headers: {
+        "Content-Type": "application.json",
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    };
+    const { data } = await api.getMenu(id, config);
     dispatch({ type: FETCHMENU, payload: data });
   } catch (error) {
     console.log(error);

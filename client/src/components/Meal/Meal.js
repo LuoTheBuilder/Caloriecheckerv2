@@ -18,7 +18,9 @@ const Meal = ({ mealName, calories, id, rating, date, setMealList }) => {
           <div className={classes.entry}>{mealName}</div>
         </div>
         <div className={classes.otherRow}>
-          <div className={classes.entry}>{calories}</div>
+          <div className={classes.entry}>
+            <div className={classes.inner}>{calories}</div>
+          </div>
         </div>
         <div className={classes.otherRow}>
           <div className={classes.entry}>{rating}</div>

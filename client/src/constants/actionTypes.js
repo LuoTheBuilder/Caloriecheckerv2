@@ -9,3 +9,6 @@ export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
 export const ADDTOMENU = "ADDTOMENU";
 export const DELETEITEM = "DELETEITEM";
+export const GETPREFS = "GETPREFS";
+export const SAVECREDS = "SAVECREDS";
+export const UPDATEPREFS = "UPDATEPREFS";

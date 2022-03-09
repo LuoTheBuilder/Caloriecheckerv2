@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import { Home } from "./Pages/Home";
 import { Login } from "./Pages/Login";
@@ -17,7 +17,9 @@ function App() {
         <Route path="/test" component={LayoutTest} exact />
         <Route path="/" component={Home} exact />
         <Route path="/login" component={Login} exact />
+
         <PrivateRoute path="/myhome" component={MyHome} />
+        <Route component={Home} />
       </Switch>
     </>
   );

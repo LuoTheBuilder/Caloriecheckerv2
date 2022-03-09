@@ -39,7 +39,10 @@ export const Login = () => {
     setSignup((prevSignup) => !prevSignup);
   };
   const changeHandler = (e) => {
-    setUserData({ ...user, [e.target.name]: e.target.value });
+    if (e.target.name === "password") {
+      setUserData({ ...user, [e.target.name]: e.target.value });
+    } else
+      setUserData({ ...user, [e.target.name]: e.target.value.toLowerCase() });
   };
 
   const submitHandler = async (e) => {

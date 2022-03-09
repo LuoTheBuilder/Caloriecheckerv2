@@ -11,7 +11,7 @@ export const Home = () => {
       <div
         className={classes.background}
         style={{
-          backgroundImage: `url("/background.jpg")`,
+          backgroundImage: `url("http://robbieis.me/images/Background.jpg")`,
           backgroundSize: "cover",
         }}
       >

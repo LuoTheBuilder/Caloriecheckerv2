@@ -1,3 +1,4 @@
+import { SAVECREDS } from "../constants/actionTypes";
 export default (users = [], action, error) => {
   switch (action.type) {
     case "AUTH":
@@ -11,6 +12,8 @@ export default (users = [], action, error) => {
       localStorage.setItem("authToken", action.data.token);
       return { authData: action?.data };
     case "NEWUSER":
+      return { data: action.data };
+    case SAVECREDS:
       return { data: action.data };
 
     case "LOGOUT":

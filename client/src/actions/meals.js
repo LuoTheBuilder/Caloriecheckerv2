@@ -1,12 +1,18 @@
-import { FETCH, CREATE, DELETE } from "../constants/actionTypes";
+import { FETCH, CREATE, DELETE, LOGOUT } from "../constants/actionTypes";
 import * as api from "../api/index";
 
 export const getMeals = (id, setError) => async (dispatch) => {
   try {
-    const { data } = await api.getMeals(id);
-
+    const config = {
+      headers: {
+        "Content-Type": "application.json",
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    };
+    const { data } = await api.getMeals(id, config);
     dispatch({ type: FETCH, payload: data });
   } catch (error) {
+    dispatch({ type: LOGOUT });
     console.log(error);
   }
 };

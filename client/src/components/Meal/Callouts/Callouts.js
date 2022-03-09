@@ -1,6 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import Callout from "./Callout";
-import { Button } from "@mui/material";
 import classes from "./Callouts.module.css";
 
 const Callouts = ({ data, meals, target }) => {

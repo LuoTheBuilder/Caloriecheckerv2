@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Container, Card } from "@mui/material";
-import { getMeals } from "../../actions/meals";
 import MealList from "./MealList";
 import classes from "./MealMain.module.css";
 import Callouts from "./Callouts/Callouts";
@@ -9,15 +8,19 @@ import Chart from "./Charts/Chart";
 import DateCondenser from "../HelperFunctions/DateCondenser";
 
 const MealMain = () => {
-  const dispatch = useDispatch();
   const today = new Date(Date.now() - 360e5).toISOString().substring(0, 10);
-  const meals = useSelector((state) => state.meals);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
+  //useSelector pulls from the redux store that was dispatched in the home
+  const prefs = useSelector((state) => state.prefs[0]);
+  const meals = useSelector((state) => state.meals);
+
+  //helperFunction
   const data = DateCondenser(meals);
+
   const startDate = new Date(Date.now() - 845e5 * 7)
     .toISOString()
     .substring(0, 10);
+
   const todayMeals = meals.filter((meal) => meal.date === today);
   const prevMeals = meals.filter(
     (meal) => meal.date < today && meal.date >= startDate
@@ -27,17 +30,13 @@ const MealMain = () => {
   const array = [
     [
       { date: "Consumed", cals: calTotal },
-      { date: "Allocation Left", cals: 17000 - calTotal },
+      { date: "Allocation Left", cals: prefs?.target * 7 - calTotal },
     ],
   ];
 
-  useEffect(() => {
-    dispatch(getMeals(user._id));
-  }, []);
-
   return (
     <Container className={classes.mainWrapper} maxWidth="xl">
-      <Callouts target={user.target} data={data.array} meals={meals} />
+      <Callouts target={prefs?.target} data={data.array} meals={meals} />
       <div className={classes.bottomWrapper}>
         <div className={classes.chartWrapper}>
           <Chart
